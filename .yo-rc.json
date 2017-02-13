@@ -1,0 +1,35 @@
+{
+  "generator-jhipster": {
+    "jhipsterVersion": "4.0.2",
+    "baseName": "prototypeApp",
+    "packageName": "com.proto.app",
+    "packageFolder": "com/proto/app",
+    "serverPort": "8080",
+    "authenticationType": "oauth2",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": false,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "buildTool": "gradle",
+    "enableSocialSignIn": false,
+    "useSass": true,
+    "clientPackageManager": "yarn",
+    "applicationType": "monolith",
+    "clientFramework": "angular2",
+    "testFrameworks": [
+      "gatling",
+      "cucumber",
+      "protractor"
+    ],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ]
+  }
+}

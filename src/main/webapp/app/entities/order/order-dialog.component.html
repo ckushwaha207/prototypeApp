@@ -1,0 +1,67 @@
+
+
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+        <h4 class="modal-title" id="myOrderLabel" jhiTranslate="prototypeApp.order.home.createOrEditLabel">Create or edit a Order</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!order.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="order.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="prototypeApp.order.orderNumber" for="field_orderNumber">Order Number</label>
+            <input type="text" class="form-control" name="orderNumber" id="field_orderNumber"
+                [(ngModel)]="order.orderNumber"
+            required />
+            <div [hidden]="!(editForm.controls.orderNumber?.dirty && editForm.controls.orderNumber?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.orderNumber?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="prototypeApp.order.state" for="field_state">State</label>
+            <select class="form-control" name="state" [(ngModel)]="order.state" id="field_state" >
+                <option value="SUBMITTED" jhiTranslate="prototypeApp.OrderState.SUBMITTED">SUBMITTED</option>
+                <option value="FAILED" jhiTranslate="prototypeApp.OrderState.FAILED">FAILED</option>
+                <option value="APPROVED" jhiTranslate="prototypeApp.OrderState.APPROVED">APPROVED</option>
+                <option value="PROCESSING" jhiTranslate="prototypeApp.OrderState.PROCESSING">PROCESSING</option>
+                <option value="PROCESSED" jhiTranslate="prototypeApp.OrderState.PROCESSED">PROCESSED</option>
+                <option value="AMENDED" jhiTranslate="prototypeApp.OrderState.AMENDED">AMENDED</option>
+                <option value="FAILED_APPROVAL" jhiTranslate="prototypeApp.OrderState.FAILED_APPROVAL">FAILED_APPROVAL</option>
+                <option value="FAILED_AMENDMENT" jhiTranslate="prototypeApp.OrderState.FAILED_AMENDMENT">FAILED_AMENDMENT</option>
+                <option value="PENDING_CUSTOMER_ACTION" jhiTranslate="prototypeApp.OrderState.PENDING_CUSTOMER_ACTION">PENDING_CUSTOMER_ACTION</option>
+                <option value="PENDING_MERCHANT_ACTION" jhiTranslate="prototypeApp.OrderState.PENDING_MERCHANT_ACTION">PENDING_MERCHANT_ACTION</option>
+                <option value="NO_PENDING_ACTION" jhiTranslate="prototypeApp.OrderState.NO_PENDING_ACTION">NO_PENDING_ACTION</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="prototypeApp.order.total" for="field_total">Total</label>
+            <input type="number" class="form-control" name="total" id="field_total"
+                [(ngModel)]="order.total"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="prototypeApp.order.subTotal" for="field_subTotal">Sub Total</label>
+            <input type="number" class="form-control" name="subTotal" id="field_subTotal"
+                [(ngModel)]="order.subTotal"
+             />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
