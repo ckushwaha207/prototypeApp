@@ -20,8 +20,6 @@ export class MenuCategoryDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
 
-    parentcategories: MenuCategory[];
-
     menuitems: MenuItem[];
 
     menus: Menu[];
@@ -40,15 +38,6 @@ export class MenuCategoryDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.menuCategoryService.query({filter: 'menucategory-is-null'}).subscribe((res: Response) => {
-            if (!this.menuCategory.parentCategoryId) {
-                this.parentcategories = res.json();
-            } else {
-                this.menuCategoryService.find(this.menuCategory.parentCategoryId).subscribe((subRes: Response) => {
-                    this.parentcategories = [subRes].concat(res.json());
-                }, (subRes: Response) => this.onError(subRes.json()));
-            }
-        }, (res: Response) => this.onError(res.json()));
         this.menuItemService.query().subscribe(
             (res: Response) => { this.menuitems = res.json(); }, (res: Response) => this.onError(res.json()));
         this.menuService.query().subscribe(
@@ -82,10 +71,6 @@ export class MenuCategoryDialogComponent implements OnInit {
 
     private onError (error) {
         this.alertService.error(error.message, null, null);
-    }
-
-    trackMenuCategoryById(index: number, item: MenuCategory) {
-        return item.id;
     }
 
     trackMenuItemById(index: number, item: MenuItem) {

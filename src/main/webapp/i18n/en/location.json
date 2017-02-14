@@ -22,7 +22,7 @@
             "city": "City",
             "state": "State",
             "country": "Country",
-            "lattitude": "Lattitude",
+            "latitude": "Latitude",
             "longitude": "Longitude"
         }
     }

@@ -26,7 +26,7 @@ public class LocationDTO implements Serializable {
 
     private String country;
 
-    private String lattitude;
+    private String latitude;
 
     private String longitude;
 
@@ -79,12 +79,12 @@ public class LocationDTO implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
-    public String getLattitude() {
-        return lattitude;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setLattitude(String lattitude) {
-        this.lattitude = lattitude;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
     public String getLongitude() {
         return longitude;
@@ -125,7 +125,7 @@ public class LocationDTO implements Serializable {
             ", city='" + city + "'" +
             ", state='" + state + "'" +
             ", country='" + country + "'" +
-            ", lattitude='" + lattitude + "'" +
+            ", latitude='" + latitude + "'" +
             ", longitude='" + longitude + "'" +
             '}';
     }

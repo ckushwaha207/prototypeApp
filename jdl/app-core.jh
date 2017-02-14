@@ -1,3 +1,4 @@
+#direction: right
 enum Diet {
 	VEG,
     NON_VEG,
@@ -5,7 +6,7 @@ enum Diet {
 }
 
 entity Organization {
-		name String required
+	name String required
     owner String
 }
 
@@ -14,35 +15,35 @@ entity BusinessRole {}
 entity Customer {}
 
 entity StoreGroup {
-		name String required
+	name String required
     siteUrl String
 }
 
 entity Store {
-		code String required
-		name String required
-	  timings String
-	  website String
-	  email String
-	  phoneNumber String
-	  mobileNumber String
-	  faxNumber String
-	  siteUrl String
+	code String required
+	name String required
+	timings String
+	website String
+	email String
+	phoneNumber String
+	mobileNumber String
+	faxNumber String
+	siteUrl String
 }
 
 entity DiningTable {
-	  number Integer required
+	number Integer required
     tableCode String required
 }
 
 entity Location {
-	  address1 String required
+	address1 String required
     address2 String
     address3 String
     city String required
     state String
     country String
-    lattitude String
+    latitude String
     longitude String
 }
 
@@ -66,22 +67,22 @@ entity MenuItem {
 
 relationship OneToOne {
     BusinessUser{user} to User,
-	  Store{location} to Location,
-    BusinessUser{storeGroup} to StoreGroup{user},
-		MenuCategory{parentCategory(name)} to MenuCategory
+	Store{location} to Location,
+    BusinessUser{storeGroup} to StoreGroup{user}
 }
 
 relationship OneToMany {
-	  StoreGroup{stores(name)} to Store{storeGroup},
+	StoreGroup{stores(name)} to Store{storeGroup},
     Store{tables} to DiningTable,
-		Menu{categories(name)} to MenuCategory{menu(name)},
-		MenuCategory{items(name)} to MenuItem{category(name)}
+	Menu{categories(name)} to MenuCategory{menu(name)},
+	MenuCategory{items(name)} to MenuItem{category(name)}
 }
 
 relationship ManyToOne {
     StoreGroup{organization} to Organization,
-	  Store{organization} to Organization,
-    BusinessUser{store(name)} to Store
+	Store{organization} to Organization,
+    BusinessUser{store(name)} to Store,
+    Menu{store} to Store{menus(name)}
 }
 
 paginate * with pagination

@@ -6,6 +6,12 @@
             "relationshipName": "categories",
             "otherEntityName": "menuCategory",
             "otherEntityRelationshipName": "menu"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "store",
+            "otherEntityName": "store",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

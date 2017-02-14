@@ -9,6 +9,7 @@ import { Menu } from './menu.model';
 import { MenuPopupService } from './menu-popup.service';
 import { MenuService } from './menu.service';
 import { MenuCategory, MenuCategoryService } from '../menu-category';
+import { Store, StoreService } from '../store';
 @Component({
     selector: 'jhi-menu-dialog',
     templateUrl: './menu-dialog.component.html'
@@ -20,12 +21,15 @@ export class MenuDialogComponent implements OnInit {
     isSaving: boolean;
 
     menucategories: MenuCategory[];
+
+    stores: Store[];
     constructor(
         public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private menuService: MenuService,
         private menuCategoryService: MenuCategoryService,
+        private storeService: StoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['menu']);
@@ -36,6 +40,8 @@ export class MenuDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.menuCategoryService.query().subscribe(
             (res: Response) => { this.menucategories = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.storeService.query().subscribe(
+            (res: Response) => { this.stores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear () {
         this.activeModal.dismiss('cancel');
@@ -68,6 +74,10 @@ export class MenuDialogComponent implements OnInit {
     }
 
     trackMenuCategoryById(index: number, item: MenuCategory) {
+        return item.id;
+    }
+
+    trackStoreById(index: number, item: Store) {
         return item.id;
     }
 }

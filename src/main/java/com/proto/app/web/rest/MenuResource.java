@@ -104,6 +104,25 @@ public class MenuResource {
     }
 
     /**
+     * GET  /menus/store/{storeId} : get all the menus using store id.
+     *
+     * @param storeId the id of the store to retrieve
+     * @return the ResponseEntity with status 200 (OK) and the list of menus in body
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
+     */
+    @GetMapping("/menus/store/{id}")
+    @Timed
+    public ResponseEntity<List<MenuDTO>> getAllMenusByStoreId(@PathVariable Long id)
+            throws URISyntaxException {
+        log.debug("REST request to get a page of Menus");
+        List<MenuDTO> page = menuService.findByStore(id);
+        // HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(MenuDTO, "/api/menus");
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
+    }
+
+
+
+    /**
      * GET  /menus/:id : get the "id" menu.
      *
      * @param id the id of the menuDTO to retrieve

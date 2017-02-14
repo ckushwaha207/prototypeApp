@@ -26,6 +26,12 @@
             "relationshipName": "storeGroup",
             "otherEntityName": "storeGroup",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "menus",
+            "otherEntityName": "menu",
+            "otherEntityRelationshipName": "store"
         }
     ],
     "fields": [

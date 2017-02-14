@@ -58,8 +58,8 @@ public class LocationResourceIntTest {
     private static final String DEFAULT_COUNTRY = "AAAAAAAAAA";
     private static final String UPDATED_COUNTRY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_LATTITUDE = "AAAAAAAAAA";
-    private static final String UPDATED_LATTITUDE = "BBBBBBBBBB";
+    private static final String DEFAULT_LATITUDE = "AAAAAAAAAA";
+    private static final String UPDATED_LATITUDE = "BBBBBBBBBB";
 
     private static final String DEFAULT_LONGITUDE = "AAAAAAAAAA";
     private static final String UPDATED_LONGITUDE = "BBBBBBBBBB";
@@ -112,7 +112,7 @@ public class LocationResourceIntTest {
                 .city(DEFAULT_CITY)
                 .state(DEFAULT_STATE)
                 .country(DEFAULT_COUNTRY)
-                .lattitude(DEFAULT_LATTITUDE)
+                .latitude(DEFAULT_LATITUDE)
                 .longitude(DEFAULT_LONGITUDE);
         return location;
     }
@@ -146,7 +146,7 @@ public class LocationResourceIntTest {
         assertThat(testLocation.getCity()).isEqualTo(DEFAULT_CITY);
         assertThat(testLocation.getState()).isEqualTo(DEFAULT_STATE);
         assertThat(testLocation.getCountry()).isEqualTo(DEFAULT_COUNTRY);
-        assertThat(testLocation.getLattitude()).isEqualTo(DEFAULT_LATTITUDE);
+        assertThat(testLocation.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
         assertThat(testLocation.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
 
         // Validate the Location in Elasticsearch
@@ -230,7 +230,7 @@ public class LocationResourceIntTest {
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())))
-            .andExpect(jsonPath("$.[*].lattitude").value(hasItem(DEFAULT_LATTITUDE.toString())))
+            .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.toString())))
             .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.toString())));
     }
 
@@ -251,7 +251,7 @@ public class LocationResourceIntTest {
             .andExpect(jsonPath("$.city").value(DEFAULT_CITY.toString()))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.toString()))
             .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY.toString()))
-            .andExpect(jsonPath("$.lattitude").value(DEFAULT_LATTITUDE.toString()))
+            .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.toString()))
             .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.toString()));
     }
 
@@ -280,7 +280,7 @@ public class LocationResourceIntTest {
                 .city(UPDATED_CITY)
                 .state(UPDATED_STATE)
                 .country(UPDATED_COUNTRY)
-                .lattitude(UPDATED_LATTITUDE)
+                .latitude(UPDATED_LATITUDE)
                 .longitude(UPDATED_LONGITUDE);
         LocationDTO locationDTO = locationMapper.locationToLocationDTO(updatedLocation);
 
@@ -299,7 +299,7 @@ public class LocationResourceIntTest {
         assertThat(testLocation.getCity()).isEqualTo(UPDATED_CITY);
         assertThat(testLocation.getState()).isEqualTo(UPDATED_STATE);
         assertThat(testLocation.getCountry()).isEqualTo(UPDATED_COUNTRY);
-        assertThat(testLocation.getLattitude()).isEqualTo(UPDATED_LATTITUDE);
+        assertThat(testLocation.getLatitude()).isEqualTo(UPDATED_LATITUDE);
         assertThat(testLocation.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
 
         // Validate the Location in Elasticsearch
@@ -366,7 +366,7 @@ public class LocationResourceIntTest {
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.toString())))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())))
-            .andExpect(jsonPath("$.[*].lattitude").value(hasItem(DEFAULT_LATTITUDE.toString())))
+            .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.toString())))
             .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.toString())));
     }
 

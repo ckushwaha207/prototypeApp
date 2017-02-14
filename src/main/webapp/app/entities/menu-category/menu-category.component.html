@@ -36,7 +36,6 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="name"><span jhiTranslate="prototypeApp.menuCategory.name">Name</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="parentCategoryName"><span jhiTranslate="prototypeApp.menuCategory.parentCategory">Parent Category</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="menuName"><span jhiTranslate="prototypeApp.menuCategory.menu">Menu</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -45,11 +44,6 @@
             <tr *ngFor="let menuCategory of menuCategories ;trackBy: trackId">
                 <td><a [routerLink]="['../menu-category', menuCategory.id ]">{{menuCategory.id}}</a></td>
                 <td>{{menuCategory.name}}</td>
-                <td>
-                    <div *ngIf="menuCategory.parentCategoryId">
-                        <a [routerLink]="['../menu-category', menuCategory.parentCategoryId  ]" >{{menuCategory.parentCategoryName}}</a>
-                    </div>
-                </td>
                 <td>
                     <div *ngIf="menuCategory.menuId">
                         <a [routerLink]="['../menu', menuCategory.menuId  ]" >{{menuCategory.menuName}}</a>

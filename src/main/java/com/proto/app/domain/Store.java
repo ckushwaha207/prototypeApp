@@ -71,6 +71,11 @@ public class Store implements Serializable {
     @ManyToOne
     private StoreGroup storeGroup;
 
+    @OneToMany(mappedBy = "store")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Menu> menus = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -258,6 +263,31 @@ public class Store implements Serializable {
 
     public void setStoreGroup(StoreGroup storeGroup) {
         this.storeGroup = storeGroup;
+    }
+
+    public Set<Menu> getMenus() {
+        return menus;
+    }
+
+    public Store menus(Set<Menu> menus) {
+        this.menus = menus;
+        return this;
+    }
+
+    public Store addMenus(Menu menu) {
+        this.menus.add(menu);
+        menu.setStore(this);
+        return this;
+    }
+
+    public Store removeMenus(Menu menu) {
+        this.menus.remove(menu);
+        menu.setStore(null);
+        return this;
+    }
+
+    public void setMenus(Set<Menu> menus) {
+        this.menus = menus;
     }
 
     @Override

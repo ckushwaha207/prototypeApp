@@ -8,6 +8,12 @@
         <dd>
             <span>{{menu.name}}</span>
         </dd>
+        <dt><span jhiTranslate="prototypeApp.menu.store">Store</span></dt>
+        <dd>
+            <div *ngIf="menu.storeId">
+                <a [routerLink]="['store', menu.storeId]">{{menu.storeId}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

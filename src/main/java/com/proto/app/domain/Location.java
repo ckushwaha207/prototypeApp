@@ -44,8 +44,8 @@ public class Location implements Serializable {
     @Column(name = "country")
     private String country;
 
-    @Column(name = "lattitude")
-    private String lattitude;
+    @Column(name = "latitude")
+    private String latitude;
 
     @Column(name = "longitude")
     private String longitude;
@@ -136,17 +136,17 @@ public class Location implements Serializable {
         this.country = country;
     }
 
-    public String getLattitude() {
-        return lattitude;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public Location lattitude(String lattitude) {
-        this.lattitude = lattitude;
+    public Location latitude(String latitude) {
+        this.latitude = latitude;
         return this;
     }
 
-    public void setLattitude(String lattitude) {
-        this.lattitude = lattitude;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
     public String getLongitude() {
@@ -192,7 +192,7 @@ public class Location implements Serializable {
             ", city='" + city + "'" +
             ", state='" + state + "'" +
             ", country='" + country + "'" +
-            ", lattitude='" + lattitude + "'" +
+            ", latitude='" + latitude + "'" +
             ", longitude='" + longitude + "'" +
             '}';
     }

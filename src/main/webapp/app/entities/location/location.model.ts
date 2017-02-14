@@ -7,7 +7,7 @@ export class Location {
         public city?: string,
         public state?: string,
         public country?: string,
-        public lattitude?: string,
+        public latitude?: string,
         public longitude?: string,
     ) { }
 }

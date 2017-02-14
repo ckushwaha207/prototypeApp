@@ -1,6 +1,8 @@
 package com.proto.app.service.dto;
 
 
+import com.proto.app.domain.MenuCategory;
+
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -17,6 +19,18 @@ public class MenuDTO implements Serializable {
     @NotNull
     private String name;
 
+    private Long storeId;
+
+    private Set<MenuCategoryDTO> categories;
+
+    public Set<MenuCategoryDTO> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<MenuCategoryDTO> categories) {
+        this.categories = categories;
+    }
+
     public Long getId() {
         return id;
     }
@@ -30,6 +44,14 @@ public class MenuDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Long storeId) {
+        this.storeId = storeId;
     }
 
     @Override

@@ -32,9 +32,12 @@ public class Menu implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "menu")
-    @JsonIgnore
+    // @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<MenuCategory> categories = new HashSet<>();
+
+    @ManyToOne
+    private Store store;
 
     public Long getId() {
         return id;
@@ -80,6 +83,19 @@ public class Menu implements Serializable {
 
     public void setCategories(Set<MenuCategory> menuCategories) {
         this.categories = menuCategories;
+    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public Menu store(Store store) {
+        this.store = store;
+        return this;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     @Override

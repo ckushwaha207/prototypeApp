@@ -12,6 +12,7 @@ import { Location, LocationService } from '../location';
 import { DiningTable, DiningTableService } from '../dining-table';
 import { Organization, OrganizationService } from '../organization';
 import { StoreGroup, StoreGroupService } from '../store-group';
+import { Menu, MenuService } from '../menu';
 @Component({
     selector: 'jhi-store-dialog',
     templateUrl: './store-dialog.component.html'
@@ -29,6 +30,8 @@ export class StoreDialogComponent implements OnInit {
     organizations: Organization[];
 
     storegroups: StoreGroup[];
+
+    menus: Menu[];
     constructor(
         public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
@@ -38,6 +41,7 @@ export class StoreDialogComponent implements OnInit {
         private diningTableService: DiningTableService,
         private organizationService: OrganizationService,
         private storeGroupService: StoreGroupService,
+        private menuService: MenuService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['store']);
@@ -61,6 +65,8 @@ export class StoreDialogComponent implements OnInit {
             (res: Response) => { this.organizations = res.json(); }, (res: Response) => this.onError(res.json()));
         this.storeGroupService.query().subscribe(
             (res: Response) => { this.storegroups = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.menuService.query().subscribe(
+            (res: Response) => { this.menus = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear () {
         this.activeModal.dismiss('cancel');
@@ -105,6 +111,10 @@ export class StoreDialogComponent implements OnInit {
     }
 
     trackStoreGroupById(index: number, item: StoreGroup) {
+        return item.id;
+    }
+
+    trackMenuById(index: number, item: Menu) {
         return item.id;
     }
 }

@@ -28,13 +28,6 @@
         </div>
 
         <div class="form-group">
-            <label jhiTranslate="prototypeApp.menuCategory.parentCategory" for="field_parentCategory">Parent Category</label>
-            <select class="form-control" id="field_parentCategory" name="parentCategory" [(ngModel)]="menuCategory.parentCategoryId">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="menuCategoryOption.id" *ngFor="let menuCategoryOption of parentcategories; trackBy: trackMenuCategoryById">{{menuCategoryOption.name}}</option>
-            </select>
-        </div>
-        <div class="form-group">
             <label jhiTranslate="prototypeApp.menuCategory.menu" for="field_menu">Menu</label>
             <select class="form-control" id="field_menu" name="menu" [(ngModel)]="menuCategory.menuId" >
                 <option [ngValue]="null"></option>

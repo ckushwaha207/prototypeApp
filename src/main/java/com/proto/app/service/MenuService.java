@@ -1,5 +1,6 @@
 package com.proto.app.service;
 
+import com.proto.app.domain.Menu;
 import com.proto.app.service.dto.MenuDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +26,14 @@ public interface MenuService {
      *  @return the list of entities
      */
     Page<MenuDTO> findAll(Pageable pageable);
+
+    /**
+     *  Get all the menus by store id.
+     *
+     *  @param id the store id
+     *  @return the list of entities
+     */
+    List<MenuDTO> findByStore(Long id);
 
     /**
      *  Get the "id" menu.

@@ -14,5 +14,6 @@ export class Store {
         public tablesId?: number,
         public organizationId?: number,
         public storeGroupId?: number,
+        public menusId?: number,
     ) { }
 }

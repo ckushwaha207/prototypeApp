@@ -33,7 +33,7 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "lattitude",
+            "fieldName": "latitude",
             "fieldType": "String"
         },
         {

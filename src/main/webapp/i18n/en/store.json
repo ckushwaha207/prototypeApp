@@ -28,7 +28,8 @@
             "location": "Location",
             "tables": "Tables",
             "organization": "Organization",
-            "storeGroup": "Store Group"
+            "storeGroup": "Store Group",
+            "menus": "Menus"
         }
     }
 }

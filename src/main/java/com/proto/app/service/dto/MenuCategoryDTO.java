@@ -17,13 +17,19 @@ public class MenuCategoryDTO implements Serializable {
     @NotNull
     private String name;
 
-    private Long parentCategoryId;
-
-    private String parentCategoryName;
-
     private Long menuId;
 
     private String menuName;
+
+    private Set<MenuItemDTO> items;
+
+    public Set<MenuItemDTO> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<MenuItemDTO> items) {
+        this.items = items;
+    }
 
     public Long getId() {
         return id;
@@ -38,22 +44,6 @@ public class MenuCategoryDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Long getParentCategoryId() {
-        return parentCategoryId;
-    }
-
-    public void setParentCategoryId(Long menuCategoryId) {
-        this.parentCategoryId = menuCategoryId;
-    }
-
-    public String getParentCategoryName() {
-        return parentCategoryName;
-    }
-
-    public void setParentCategoryName(String menuCategoryName) {
-        this.parentCategoryName = menuCategoryName;
     }
 
     public Long getMenuId() {
