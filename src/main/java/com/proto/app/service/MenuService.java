@@ -21,7 +21,7 @@ public interface MenuService {
 
     /**
      *  Get all the menus.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -33,7 +33,7 @@ public interface MenuService {
      *  @param id the store id
      *  @return the list of entities
      */
-    List<MenuDTO> findByStore(Long id);
+    List<MenuDTO> findAllByStoreId(Long id);
 
     /**
      *  Get the "id" menu.
@@ -54,7 +54,7 @@ public interface MenuService {
      * Search for the menu corresponding to the query.
      *
      *  @param query the query of the search
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */

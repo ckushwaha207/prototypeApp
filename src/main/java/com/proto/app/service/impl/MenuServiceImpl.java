@@ -29,7 +29,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class MenuServiceImpl implements MenuService{
 
     private final Logger log = LoggerFactory.getLogger(MenuServiceImpl.class);
-    
+
     private final MenuRepository menuRepository;
 
     private final MenuMapper menuMapper;
@@ -60,7 +60,7 @@ public class MenuServiceImpl implements MenuService{
 
     /**
      *  Get all the menus.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -80,7 +80,7 @@ public class MenuServiceImpl implements MenuService{
      */
     @Override
     @Transactional(readOnly = true)
-    public List<MenuDTO> findByStore(Long id) {
+    public List<MenuDTO> findAllByStoreId(Long id) {
         log.debug("Request to get all Menus");
         List<Menu> result = menuRepository.findAllByStoreId(id);
 
