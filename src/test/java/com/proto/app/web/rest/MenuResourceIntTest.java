@@ -8,6 +8,7 @@ import com.proto.app.service.MenuService;
 import com.proto.app.repository.search.MenuSearchRepository;
 import com.proto.app.service.dto.MenuDTO;
 import com.proto.app.service.mapper.MenuMapper;
+import com.proto.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -62,6 +63,9 @@ public class MenuResourceIntTest {
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
     @Autowired
+    private ExceptionTranslator exceptionTranslator;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restMenuMockMvc;
@@ -74,6 +78,7 @@ public class MenuResourceIntTest {
         MenuResource menuResource = new MenuResource(menuService);
         this.restMenuMockMvc = MockMvcBuilders.standaloneSetup(menuResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter).build();
     }
 

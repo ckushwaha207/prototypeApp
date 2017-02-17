@@ -8,6 +8,7 @@ import com.proto.app.service.PaymentService;
 import com.proto.app.repository.search.PaymentSearchRepository;
 import com.proto.app.service.dto.PaymentDTO;
 import com.proto.app.service.mapper.PaymentMapper;
+import com.proto.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -73,6 +74,9 @@ public class PaymentResourceIntTest {
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
     @Autowired
+    private ExceptionTranslator exceptionTranslator;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restPaymentMockMvc;
@@ -85,6 +89,7 @@ public class PaymentResourceIntTest {
         PaymentResource paymentResource = new PaymentResource(paymentService);
         this.restPaymentMockMvc = MockMvcBuilders.standaloneSetup(paymentResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter).build();
     }
 

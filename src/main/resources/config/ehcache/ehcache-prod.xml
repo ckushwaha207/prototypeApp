@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns='http://www.ehcache.org/v3'
+         xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+    <cache-template name="simple">
+        <expiry>
+            <ttl unit="seconds">3600</ttl>
+        </expiry>
+        <heap unit="entries">1000</heap>
+    </cache-template>
+
+    <cache alias="com.proto.app.domain.User" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Authority" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.User.authorities" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.PersistentToken" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.User.persistentTokens" uses-template="simple"/>
+
+    <cache alias="com.proto.app.social.SocialUserConnection" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.MenuCategory" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.MenuCategory.items" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.BusinessRole" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.CommerceItem" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Customer" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.DiningTable" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Location" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Menu" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Menu.categories" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.BusinessUser" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.MenuItem" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Order" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Order.items" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Order.payments" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Organization" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Payment" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Payment.authorizationStatuses" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Store" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Store.tables" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.Store.menus" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.StoreGroup" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.StoreGroup.stores" uses-template="simple"/>
+
+    <cache alias="com.proto.app.domain.TransactionStatus" uses-template="simple"/>
+
+    <!-- jhipster-needle-ehcache-add-entry -->
+</config>

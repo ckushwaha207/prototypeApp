@@ -8,6 +8,7 @@ import com.proto.app.service.CommerceItemService;
 import com.proto.app.repository.search.CommerceItemSearchRepository;
 import com.proto.app.service.dto.CommerceItemDTO;
 import com.proto.app.service.mapper.CommerceItemMapper;
+import com.proto.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -72,6 +73,9 @@ public class CommerceItemResourceIntTest {
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
     @Autowired
+    private ExceptionTranslator exceptionTranslator;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restCommerceItemMockMvc;
@@ -84,6 +88,7 @@ public class CommerceItemResourceIntTest {
         CommerceItemResource commerceItemResource = new CommerceItemResource(commerceItemService);
         this.restCommerceItemMockMvc = MockMvcBuilders.standaloneSetup(commerceItemResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter).build();
     }
 

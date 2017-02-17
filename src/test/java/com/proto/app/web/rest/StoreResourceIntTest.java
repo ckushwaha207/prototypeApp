@@ -8,6 +8,7 @@ import com.proto.app.service.StoreService;
 import com.proto.app.repository.search.StoreSearchRepository;
 import com.proto.app.service.dto.StoreDTO;
 import com.proto.app.service.mapper.StoreMapper;
+import com.proto.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -86,6 +87,9 @@ public class StoreResourceIntTest {
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
     @Autowired
+    private ExceptionTranslator exceptionTranslator;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restStoreMockMvc;
@@ -98,6 +102,7 @@ public class StoreResourceIntTest {
         StoreResource storeResource = new StoreResource(storeService);
         this.restStoreMockMvc = MockMvcBuilders.standaloneSetup(storeResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter).build();
     }
 

@@ -115,12 +115,6 @@ if (project.hasProperty('prod')) {
     apply from: 'gradle/profile_dev.gradle'
 }
 
-if (project.hasProperty('shell')) {
-    dependencies {
-        compile "org.springframework.boot:spring-boot-starter-remote-shell"
-    }
-}
-
 if (project.hasProperty('graphite')) {
     apply from: 'gradle/graphite.gradle'
 }
@@ -224,6 +218,11 @@ dependencies {
     compile "mysql:mysql-connector-java"
     compile "com.h2database:h2"
     compile "org.mapstruct:mapstruct-jdk8:${mapstruct_version}"
+    compile "org.apache.httpcomponents:httpclient"
+    compile "org.springframework.social:spring-social-security"
+    compile "org.springframework.social:spring-social-google:${spring_social_google_version}"
+    compile "org.springframework.social:spring-social-facebook"
+    compile "org.springframework.social:spring-social-twitter"
     testCompile "com.jayway.awaitility:awaitility:${awaility_version}"
     testCompile "com.jayway.jsonpath:json-path"
     testCompile "info.cukes:cucumber-junit:${cucumber_version}"

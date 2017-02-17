@@ -1,6 +1,6 @@
 {
   "generator-jhipster": {
-    "jhipsterVersion": "4.0.2",
+    "jhipsterVersion": "4.0.3",
     "baseName": "prototypeApp",
     "packageName": "com.proto.app",
     "packageFolder": "com/proto/app",
@@ -19,7 +19,6 @@
     "useSass": true,
     "clientPackageManager": "yarn",
     "applicationType": "monolith",
-    "clientFramework": "angular2",
     "testFrameworks": [
       "gatling",
       "cucumber",
@@ -30,6 +29,8 @@
     "nativeLanguage": "en",
     "languages": [
       "en"
-    ]
+    ],
+    "serviceDiscoveryType": false,
+    "clientFramework": "angular2"
   }
 }

@@ -32,7 +32,7 @@ public class Menu implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "menu")
-    // @JsonIgnore
+    @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<MenuCategory> categories = new HashSet<>();
 

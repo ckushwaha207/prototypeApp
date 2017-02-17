@@ -8,6 +8,7 @@ import com.proto.app.service.LocationService;
 import com.proto.app.repository.search.LocationSearchRepository;
 import com.proto.app.service.dto.LocationDTO;
 import com.proto.app.service.mapper.LocationMapper;
+import com.proto.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -83,6 +84,9 @@ public class LocationResourceIntTest {
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
     @Autowired
+    private ExceptionTranslator exceptionTranslator;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restLocationMockMvc;
@@ -95,6 +99,7 @@ public class LocationResourceIntTest {
         LocationResource locationResource = new LocationResource(locationService);
         this.restLocationMockMvc = MockMvcBuilders.standaloneSetup(locationResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter).build();
     }
 

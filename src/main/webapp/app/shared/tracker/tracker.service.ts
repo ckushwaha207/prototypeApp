@@ -16,7 +16,7 @@ export class JhiTrackerService {
     connectedPromise: any;
     listener: Observable<any>;
     listenerObserver: Observer<any>;
-    alreadyConnectedOnce: boolean = false;
+    alreadyConnectedOnce = false;
     private subscription: Subscription;
 
     constructor(

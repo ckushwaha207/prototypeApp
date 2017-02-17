@@ -17,6 +17,8 @@ import {
     JhiTrackerService,
     HasAuthorityDirective,
     HasAnyAuthorityDirective,
+    JhiSocialComponent,
+    SocialService,
     JhiLoginModalComponent
 } from './';
 
@@ -26,6 +28,7 @@ import {
         PrototypeAppSharedCommonModule
     ],
     declarations: [
+        JhiSocialComponent,
         JhiLoginModalComponent,
         HasAuthorityDirective,
         HasAnyAuthorityDirective
@@ -40,6 +43,7 @@ import {
         CSRFService,
         JhiTrackerService,
         AuthServerProvider,
+        SocialService,
         AuthService,
         UserService,
         DatePipe
@@ -47,6 +51,7 @@ import {
     entryComponents: [JhiLoginModalComponent],
     exports: [
         PrototypeAppSharedCommonModule,
+        JhiSocialComponent,
         JhiLoginModalComponent,
         HasAuthorityDirective,
         HasAnyAuthorityDirective,

@@ -8,6 +8,7 @@ import com.proto.app.service.DiningTableService;
 import com.proto.app.repository.search.DiningTableSearchRepository;
 import com.proto.app.service.dto.DiningTableDTO;
 import com.proto.app.service.mapper.DiningTableMapper;
+import com.proto.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -65,6 +66,9 @@ public class DiningTableResourceIntTest {
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
     @Autowired
+    private ExceptionTranslator exceptionTranslator;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restDiningTableMockMvc;
@@ -77,6 +81,7 @@ public class DiningTableResourceIntTest {
         DiningTableResource diningTableResource = new DiningTableResource(diningTableService);
         this.restDiningTableMockMvc = MockMvcBuilders.standaloneSetup(diningTableResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter).build();
     }
 

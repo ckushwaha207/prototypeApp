@@ -8,6 +8,7 @@ import com.proto.app.service.BusinessRoleService;
 import com.proto.app.repository.search.BusinessRoleSearchRepository;
 import com.proto.app.service.dto.BusinessRoleDTO;
 import com.proto.app.service.mapper.BusinessRoleMapper;
+import com.proto.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -59,6 +60,9 @@ public class BusinessRoleResourceIntTest {
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
     @Autowired
+    private ExceptionTranslator exceptionTranslator;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restBusinessRoleMockMvc;
@@ -71,6 +75,7 @@ public class BusinessRoleResourceIntTest {
         BusinessRoleResource businessRoleResource = new BusinessRoleResource(businessRoleService);
         this.restBusinessRoleMockMvc = MockMvcBuilders.standaloneSetup(businessRoleResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter).build();
     }
 

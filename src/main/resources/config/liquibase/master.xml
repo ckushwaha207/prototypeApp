@@ -24,14 +24,12 @@
     <include file="classpath:config/liquibase/changelog/20170213043543_added_entity_constraints_MenuCategory.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170213043543_added_entity_constraints_CommerceItem.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170213043543_added_entity_constraints_DiningTable.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170213043543_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170213043543_added_entity_constraints_BusinessUser.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170213043543_added_entity_constraints_MenuItem.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170213043543_added_entity_constraints_Payment.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170213043543_added_entity_constraints_Store.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170213043543_added_entity_constraints_StoreGroup.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170213043543_added_entity_constraints_TransactionStatus.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170213043543_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
-
-    <include file="classpath:config/liquibase/changelog/20170214142318_load_initial_data_entities.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

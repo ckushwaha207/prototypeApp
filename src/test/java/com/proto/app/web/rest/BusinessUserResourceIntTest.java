@@ -8,6 +8,7 @@ import com.proto.app.service.BusinessUserService;
 import com.proto.app.repository.search.BusinessUserSearchRepository;
 import com.proto.app.service.dto.BusinessUserDTO;
 import com.proto.app.service.mapper.BusinessUserMapper;
+import com.proto.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -59,6 +60,9 @@ public class BusinessUserResourceIntTest {
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
     @Autowired
+    private ExceptionTranslator exceptionTranslator;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restBusinessUserMockMvc;
@@ -71,6 +75,7 @@ public class BusinessUserResourceIntTest {
         BusinessUserResource businessUserResource = new BusinessUserResource(businessUserService);
         this.restBusinessUserMockMvc = MockMvcBuilders.standaloneSetup(businessUserResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter).build();
     }
 

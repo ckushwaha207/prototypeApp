@@ -8,6 +8,7 @@ import com.proto.app.service.CustomerService;
 import com.proto.app.repository.search.CustomerSearchRepository;
 import com.proto.app.service.dto.CustomerDTO;
 import com.proto.app.service.mapper.CustomerMapper;
+import com.proto.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -59,6 +60,9 @@ public class CustomerResourceIntTest {
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
     @Autowired
+    private ExceptionTranslator exceptionTranslator;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restCustomerMockMvc;
@@ -71,6 +75,7 @@ public class CustomerResourceIntTest {
         CustomerResource customerResource = new CustomerResource(customerService);
         this.restCustomerMockMvc = MockMvcBuilders.standaloneSetup(customerResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter).build();
     }
 

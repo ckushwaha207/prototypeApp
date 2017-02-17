@@ -14,7 +14,7 @@ if (!fs.existsSync(ddlPath)) {
     execSync('webpack --config webpack/webpack.vendor.js');
 }
 
-module.exports = webpackMerge(commonConfig({env: ENV}), {
+module.exports = webpackMerge(commonConfig({ env: ENV }), {
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './build/www',
@@ -38,7 +38,7 @@ module.exports = webpackMerge(commonConfig({env: ENV}), {
         }]
     },
     output: {
-        path: path.resolve('build/www') ,
+        path: path.resolve('build/www'),
         filename: '[name].bundle.js',
         chunkFilename: '[id].chunk.js'
     },

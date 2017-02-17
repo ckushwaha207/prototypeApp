@@ -13,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,7 +28,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class MenuServiceImpl implements MenuService{
 
     private final Logger log = LoggerFactory.getLogger(MenuServiceImpl.class);
-
+    
     private final MenuRepository menuRepository;
 
     private final MenuMapper menuMapper;
@@ -60,7 +59,7 @@ public class MenuServiceImpl implements MenuService{
 
     /**
      *  Get all the menus.
-     *
+     *  
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -70,29 +69,6 @@ public class MenuServiceImpl implements MenuService{
         log.debug("Request to get all Menus");
         Page<Menu> result = menuRepository.findAll(pageable);
         return result.map(menu -> menuMapper.menuToMenuDTO(menu));
-    }
-
-    /**
-     *  Get all the menus by store id.
-     *
-     *  @param id the store id
-     *  @return the list of entities
-     */
-    @Override
-    @Transactional(readOnly = true)
-    public List<MenuDTO> findAllByStoreId(Long id) {
-        log.debug("Request to get all Menus");
-        List<Menu> result = menuRepository.findAllByStoreId(id);
-
-        List<MenuDTO> menus = new ArrayList<>();
-        if(result != null && !result.isEmpty()) {
-            for (Menu menu :
-                    result) {
-                menus.add(menuMapper.menuToMenuDTO(menu));
-            }
-        }
-
-        return menus;
     }
 
     /**

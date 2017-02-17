@@ -3,10 +3,8 @@ package com.proto.app.service.mapper;
 import com.proto.app.domain.*;
 import com.proto.app.service.dto.MenuCategoryDTO;
 
-import com.proto.app.service.dto.MenuItemDTO;
 import org.mapstruct.*;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Mapper for the entity MenuCategory and its DTO MenuCategoryDTO.
@@ -34,14 +32,4 @@ public interface MenuCategoryMapper {
         menu.setId(id);
         return menu;
     }
-
-    // mapping for menu-items
-
-    @Mappings({
-            @Mapping(target = "categoryId", ignore = true),
-            @Mapping(target = "categoryName", ignore = true)
-    })
-    MenuItemDTO menuItemToMenuItemDTO(MenuItem menuItem);
-
-    List<MenuItemDTO> menuItemsToMenuItemDTOs(Set<MenuItem> menuItems);
 }

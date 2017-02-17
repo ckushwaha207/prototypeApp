@@ -8,6 +8,7 @@ import {
     passwordResetFinishRoute,
     passwordResetInitRoute,
     registerRoute,
+    socialRegisterRoute,
     settingsRoute
 } from './';
 
@@ -17,6 +18,7 @@ let ACCOUNT_ROUTES = [
    passwordResetFinishRoute,
    passwordResetInitRoute,
    registerRoute,
+   socialRegisterRoute,
    settingsRoute
 ];
 

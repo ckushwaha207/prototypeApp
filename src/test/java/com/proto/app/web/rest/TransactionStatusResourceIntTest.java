@@ -8,6 +8,7 @@ import com.proto.app.service.TransactionStatusService;
 import com.proto.app.repository.search.TransactionStatusSearchRepository;
 import com.proto.app.service.dto.TransactionStatusDTO;
 import com.proto.app.service.mapper.TransactionStatusMapper;
+import com.proto.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -74,6 +75,9 @@ public class TransactionStatusResourceIntTest {
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
     @Autowired
+    private ExceptionTranslator exceptionTranslator;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restTransactionStatusMockMvc;
@@ -86,6 +90,7 @@ public class TransactionStatusResourceIntTest {
         TransactionStatusResource transactionStatusResource = new TransactionStatusResource(transactionStatusService);
         this.restTransactionStatusMockMvc = MockMvcBuilders.standaloneSetup(transactionStatusResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter).build();
     }
 

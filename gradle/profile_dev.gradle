@@ -20,7 +20,7 @@ bootRun {
     args = []
 }
 
-task webpack(type: YarnTask, dependsOn: 'yarn_install') {
+task webpackBuildDev(type: YarnTask) {
     args = ["run", "webpack:build:dev"]
 }
 
@@ -41,5 +41,5 @@ processResources {
     }
 }
 
-processResources.dependsOn webpack
-webpack.onlyIf { project.hasProperty('webpack') }
+processResources.dependsOn webpackBuildDev
+webpackBuildDev.onlyIf { project.hasProperty('webpack') }

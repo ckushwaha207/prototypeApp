@@ -8,6 +8,7 @@ import com.proto.app.service.OrderService;
 import com.proto.app.repository.search.OrderSearchRepository;
 import com.proto.app.service.dto.OrderDTO;
 import com.proto.app.service.mapper.OrderMapper;
+import com.proto.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -72,6 +73,9 @@ public class OrderResourceIntTest {
     private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
 
     @Autowired
+    private ExceptionTranslator exceptionTranslator;
+
+    @Autowired
     private EntityManager em;
 
     private MockMvc restOrderMockMvc;
@@ -84,6 +88,7 @@ public class OrderResourceIntTest {
         OrderResource orderResource = new OrderResource(orderService);
         this.restOrderMockMvc = MockMvcBuilders.standaloneSetup(orderResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setControllerAdvice(exceptionTranslator)
             .setMessageConverters(jacksonMessageConverter).build();
     }
 
